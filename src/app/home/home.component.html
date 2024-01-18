@@ -1,0 +1,30 @@
+<table class="table table-primary ">
+  <thead class="thead-dark">
+      <tr>
+        <th scope="col" >Book ID</th>
+        <th scope="col" (click)="sort('title')">Book Title&nbsp;<i class="fa fa-sort"></i></th>
+        <th scope="col">Author</th>
+        <th scope="col">Description</th>
+        <th scope="col"(click)="sort('id')">Price&nbsp;<i class="fa fa-sort"></i></th>
+        <th > Image</th>
+        <th> Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books |orderBy:key:reverse">
+        <td> {{book.id}}</td>
+        <td> {{book.title}}</td>
+        <td> {{book.author}}</td>
+        <td> {{book.description}}</td>
+        <td> {{book.price | currency:'INR'}}</td> <td><img src="assets/img/{{book.title}}.jpg" alt="Image of {{book.title}}" width="100vw">{{ book.image }}</td>
+
+        <td>
+
+          
+          <a class="btn btn-primary" href="#" role="button" routerLink="/updatebook/{{book.id}}">Update</a>
+          <button (click)="deleteBook(book.id)" class="btn btn-success">Delete</button>
+      </td>
+     
+      </tr>
+    </tbody>
+  </table>
